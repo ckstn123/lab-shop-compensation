@@ -31,48 +31,26 @@ public class Inventory {
 
     //<<< Clean Arch / Port Method
     public static void decreaseStock(OrderPlaced orderPlaced) {
-        //implement business logic here:
-
-        /** Example 1:  new item 
-        Inventory inventory = new Inventory();
-        repository().save(inventory);
-
-        */
-
-        /** Example 2:  finding and process
-        
-        repository().findById(orderPlaced.get???()).ifPresent(inventory->{
+        repository().findById(Long.valueOf(orderPlaced.getProductId())).ifPresent(inventory->{
             
-            inventory // do something
+            inventory.setStock(inventory.getStock() - orderPlaced.getQty()); 
             repository().save(inventory);
 
 
          });
-        */
 
     }
 
-    //>>> Clean Arch / Port Method
     //<<< Clean Arch / Port Method
     public static void increaseStock(OrderCancelled orderCancelled) {
-        //implement business logic here:
 
-        /** Example 1:  new item 
-        Inventory inventory = new Inventory();
-        repository().save(inventory);
-
-        */
-
-        /** Example 2:  finding and process
-        
-        repository().findById(orderCancelled.get???()).ifPresent(inventory->{
+        repository().findById(Long.valueOf(orderCancelled.getProductId())).ifPresent(inventory->{
             
-            inventory // do something
+            inventory.setStock(inventory.getStock() + orderCancelled.getQty()); 
             repository().save(inventory);
 
 
          });
-        */
 
     }
     //>>> Clean Arch / Port Method
